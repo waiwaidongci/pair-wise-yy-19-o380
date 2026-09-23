@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>岩芯薄片显微照片索引台</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
@@ -16,10 +16,24 @@
       <button id="exportBtn" type="button">导出观察清单</button>
     </header>
 
-    <section class="layout">
+    <nav class="tabbar">
+      <div class="tabs">
+        <button type="button" data-tab="index" class="tab-btn">索引台</button>
+        <button type="button" data-tab="rotation" class="tab-btn">课堂轮转</button>
+      </div>
+      <div class="identity">
+        <span class="identity-label">当前身份</span>
+        <button type="button" data-role="student" class="role-btn">学生</button>
+        <button type="button" data-role="teacher" class="role-btn">老师</button>
+        <input id="studentName" type="text" placeholder="学生姓名（提交前请填写）">
+      </div>
+    </nav>
+
+    <section id="tab-index" class="layout">
       <form id="sampleForm" class="editor">
         <h2>样本录入</h2>
         <label>显微照片<input id="photoInput" type="file" accept="image/*"></label>
+        <small id="photoHint" class="field-hint"></small>
         <label>样本编号<input name="code" required placeholder="BX-17-03"></label>
         <label>采样地点<input name="location" placeholder="剖面东侧第二层"></label>
         <div class="pair">
@@ -35,7 +49,9 @@
         <label>主要矿物<input name="minerals" placeholder="石英、斜长石、黑云母"></label>
         <label>颗粒结构<input name="texture" placeholder="半自形粒状、碎裂结构"></label>
         <label>老师批注<textarea name="comment" rows="4" placeholder="记录鉴定依据或疑点"></textarea></label>
-        <button type="submit">保存样本</button>
+        <button type="submit" id="saveSampleBtn">保存样本</button>
+        <button type="button" id="cancelEditBtn" class="btn-secondary" hidden>取消编辑</button>
+        <p id="sampleMsg" class="form-msg" role="status"></p>
       </form>
 
       <section class="board">
@@ -55,6 +71,43 @@
         <h2>并排对比</h2>
         <div id="comparePane" class="compare-pane"></div>
       </aside>
+    </section>
+
+    <section id="tab-rotation" class="rotation" hidden>
+      <div class="panel rotation-controls">
+        <div class="lesson-bar">
+          <label>课节
+            <select id="lessonSelect"></select>
+          </label>
+          <label>新课节<input id="newLessonInput" type="text" placeholder="如：9月23日 第3节"></label>
+          <button type="button" id="addLessonBtn">开设课节</button>
+          <span id="lessonStatus" class="lesson-status"></span>
+          <button type="button" id="closeLessonBtn" class="btn-amber">下课并生成补交清单</button>
+          <button type="button" id="reopenLessonBtn" class="btn-secondary" hidden>重新开课</button>
+        </div>
+
+        <form id="assignForm" class="assign-form">
+          <h3>安排轮转（一片两人，一节课一片只进一组）</h3>
+          <div class="assign-fields">
+            <label>样本
+              <select id="assignSample"></select>
+            </label>
+            <label>同学甲<input id="assignA" type="text" placeholder="姓名"></label>
+            <label>同学乙<input id="assignB" type="text" placeholder="姓名"></label>
+            <button type="submit">安排进本节课</button>
+          </div>
+          <p id="assignMsg" class="form-msg" role="status"></p>
+        </form>
+
+        <div class="queue-block">
+          <h3>待安排样本（现有样本自动入池）</h3>
+          <div id="queueChips" class="chip-row"></div>
+        </div>
+      </div>
+
+      <div id="makeupPanel" class="panel makeup-panel" hidden></div>
+      <div id="assignmentList" class="assignment-grid"></div>
+      <div id="discussionQueue"></div>
     </section>
   </main>
   <script src="./app.js"></script>

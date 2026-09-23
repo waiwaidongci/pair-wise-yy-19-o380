@@ -244,3 +244,521 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- 标签页与身份栏 ---------- */
+
+.tabbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  background: #e3ece7;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.tab-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.identity {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.identity-label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.role-btn {
+  min-height: 34px;
+  padding: 0 14px;
+  background: white;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.role-btn.active {
+  background: #203b33;
+  color: white;
+  border-color: #203b33;
+}
+
+#studentName {
+  width: 190px;
+  min-height: 34px;
+  padding: 6px 10px;
+}
+
+#studentName.hidden {
+  display: none;
+}
+
+/* ---------- 通用小元素 ---------- */
+
+.btn-secondary {
+  background: #e8f0eb;
+  color: var(--ink);
+  border: 1px solid var(--line);
+}
+
+.btn-amber {
+  background: var(--amber);
+}
+
+.btn-small {
+  min-height: 30px;
+  padding: 0 12px;
+  font-size: 13px;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 4px;
+  color: var(--amber);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.form-msg {
+  min-height: 18px;
+  margin: 8px 0 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.form-msg.msg-ok { color: var(--accent); }
+.form-msg.msg-warn { color: var(--amber); }
+.form-msg.msg-err { color: #b43a2e; font-weight: 600; }
+
+.action-links {
+  display: flex;
+  gap: 8px;
+}
+
+.link-btn {
+  min-height: auto;
+  padding: 2px 6px;
+  background: none;
+  color: var(--accent);
+  text-decoration: underline;
+  font-size: 12px;
+}
+
+.link-btn.danger {
+  color: #b43a2e;
+}
+
+.hint-text {
+  color: var(--muted);
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.meta-line {
+  color: var(--muted);
+  font-size: 12px;
+  margin: 4px 0 0;
+}
+
+/* ---------- 课堂轮转 ---------- */
+
+.rotation {
+  display: grid;
+  gap: 14px;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgb(251 253 249 / 94%);
+  box-shadow: 0 14px 42px rgb(28 58 47 / 8%);
+  padding: 14px 16px;
+}
+
+.rotation-controls {
+  display: grid;
+  gap: 14px;
+}
+
+.lesson-bar {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.lesson-bar label {
+  margin: 0;
+  min-width: 160px;
+}
+
+.lesson-bar button {
+  min-height: 38px;
+}
+
+.lesson-status {
+  font-size: 13px;
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.lesson-status.is-open {
+  background: #e2f0e7;
+  color: var(--accent);
+}
+
+.lesson-status.is-closed {
+  background: #f6e7d4;
+  color: var(--amber);
+}
+
+.assign-form {
+  border-top: 1px dashed var(--line);
+  padding-top: 12px;
+}
+
+.assign-form.disabled {
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.assign-form h3 {
+  margin: 0 0 10px;
+  font-size: 15px;
+}
+
+.assign-fields {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr auto;
+  gap: 10px;
+  align-items: end;
+}
+
+.assign-fields label {
+  margin: 0;
+}
+
+.assign-fields button {
+  min-height: 40px;
+}
+
+.queue-block h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  background: #e8f0eb;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 13px;
+}
+
+.section-title {
+  margin: 4px 0 10px;
+  font-size: 16px;
+}
+
+.assignment-grid .cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  gap: 12px;
+}
+
+.assignment-card {
+  border: 1px solid var(--line);
+  border-left-width: 4px;
+  border-radius: 8px;
+  background: white;
+  padding: 14px;
+}
+
+.assignment-card.st-draft { border-left-color: var(--muted); }
+.assignment-card.st-waiting { border-left-color: #4a7fb5; }
+.assignment-card.st-fresh { border-left-color: var(--accent); }
+.assignment-card.st-disputed { border-left-color: #b43a2e; }
+.assignment-card.st-resolved { border-left-color: #203b33; }
+.assignment-card.st-invalid { border-left-color: var(--amber); }
+
+.assignment-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.assignment-head h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.status-tag {
+  flex: none;
+  font-size: 12px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+}
+
+.status-tag.st-draft { background: #eef1f0; color: var(--muted); }
+.status-tag.st-waiting { background: #e4edf5; color: #35638f; }
+.status-tag.st-fresh { background: #e2f0e7; color: var(--accent); }
+.status-tag.st-disputed { background: #f7e4e1; color: #b43a2e; }
+.status-tag.st-resolved { background: #dde8e3; color: #203b33; }
+.status-tag.st-invalid { background: #f6e7d4; color: var(--amber); }
+
+.slots-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.slot {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fcfdfc;
+}
+
+.slot.is-submitted {
+  background: #f6faf8;
+}
+
+.slot h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+}
+
+.slot textarea {
+  padding: 8px;
+  font-size: 13px;
+}
+
+.slot-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.conclusion-view {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.sealed {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+  background: #f3f6f4;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  border-radius: 999px;
+  padding: 1px 8px;
+  font-weight: 600;
+}
+
+.badge-invalid {
+  background: #f6e7d4;
+  color: var(--amber);
+}
+
+.result-box {
+  margin-top: 10px;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.result-fresh {
+  background: #e2f0e7;
+  color: #1d5a4a;
+}
+
+.result-resolved {
+  background: #dde8e3;
+  color: #203b33;
+}
+
+.result-disputed {
+  background: #f7e4e1;
+  color: #b43a2e;
+}
+
+.result-invalid {
+  background: #f6e7d4;
+  color: #8a5c17;
+}
+
+.archives {
+  margin-top: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.archive {
+  border-top: 1px dashed var(--line);
+  padding-top: 6px;
+  font-size: 12px;
+}
+
+.archive summary {
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.archive-entry {
+  margin-top: 6px;
+  background: #f7f9f8;
+  border-radius: 6px;
+  padding: 6px 8px;
+}
+
+.archive-entry p {
+  margin: 4px 0 0;
+  white-space: pre-wrap;
+}
+
+/* ---------- 讨论队列 ---------- */
+
+.discussion-panel h3 {
+  margin: 0 0 6px;
+  font-size: 16px;
+  color: #b43a2e;
+}
+
+.discussion-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.discussion-item {
+  border: 1px solid #e6c5c0;
+  border-radius: 8px;
+  background: #fff;
+  padding: 12px;
+}
+
+.discussion-item > header {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.discussion-slots {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.discussion-item > label {
+  margin: 0;
+}
+
+/* ---------- 补交清单 ---------- */
+
+.makeup-panel {
+  border-color: var(--amber);
+}
+
+.makeup-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.makeup-head h3 {
+  margin: 0;
+  font-size: 15px;
+}
+
+.makeup-head > div {
+  display: flex;
+  gap: 8px;
+}
+
+.makeup-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.makeup-table th,
+.makeup-table td {
+  border: 1px solid var(--line);
+  padding: 8px 10px;
+  text-align: left;
+}
+
+.makeup-table th {
+  background: #f3f6f4;
+}
+
+.makeup-table .ok {
+  color: var(--accent);
+}
+
+.makeup-table .miss {
+  color: #b43a2e;
+  font-weight: 700;
+}
+
+.ok-block {
+  margin: 10px 0 0;
+  background: #e2f0e7;
+  color: #1d5a4a;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 13px;
+}
+
+@media (max-width: 860px) {
+  .assign-fields,
+  .slots-grid,
+  .discussion-slots {
+    grid-template-columns: 1fr;
+  }
+}
