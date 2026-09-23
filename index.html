@@ -35,7 +35,8 @@
         <label>主要矿物<input name="minerals" placeholder="石英、斜长石、黑云母"></label>
         <label>颗粒结构<input name="texture" placeholder="半自形粒状、碎裂结构"></label>
         <label>老师批注<textarea name="comment" rows="4" placeholder="记录鉴定依据或疑点"></textarea></label>
-        <button type="submit">保存样本</button>
+        <button type="submit" id="saveSampleBtn">保存样本</button>
+        <button type="button" id="cancelEditBtn" hidden>取消修改</button>
       </form>
 
       <section class="board">
@@ -55,6 +56,58 @@
         <h2>并排对比</h2>
         <div id="comparePane" class="compare-pane"></div>
       </aside>
+    </section>
+
+    <section class="rotation">
+      <div class="rotation-head">
+        <h2>课堂轮转</h2>
+        <p>一片配两人 · 一节课只进一组 · 两份结论都提交且一致才出结果</p>
+      </div>
+      <div class="rotation-grid">
+        <div class="panel">
+          <h3>排课</h3>
+          <form id="scheduleForm" class="schedule-form">
+            <label>样本（重复安排会退回）
+              <select id="scheduleSample" required></select>
+            </label>
+            <label>节次
+              <select id="scheduleSlot">
+                <option>第1节</option>
+                <option>第2节</option>
+                <option>第3节</option>
+                <option>第4节</option>
+                <option>第5节</option>
+                <option>第6节</option>
+                <option>第7节</option>
+                <option>第8节</option>
+              </select>
+            </label>
+            <div class="pair">
+              <label>学生甲<input id="memberA" required placeholder="姓名"></label>
+              <label>学生乙<input id="memberB" required placeholder="姓名"></label>
+            </div>
+            <button type="submit">安排进课堂</button>
+            <p id="scheduleError" class="form-error" hidden></p>
+          </form>
+          <h4>待安排样本（<span id="poolCount">0</span>）</h4>
+          <ul id="poolList" class="pool-list"></ul>
+        </div>
+
+        <div class="panel">
+          <h3>课时与结论</h3>
+          <div id="sessionList" class="session-list"></div>
+        </div>
+
+        <div class="panel">
+          <h3>讨论队列</h3>
+          <div id="discussionList" class="discussion-list"></div>
+        </div>
+
+        <div class="panel">
+          <h3>补交清单</h3>
+          <div id="makeupList" class="makeup-list"></div>
+        </div>
+      </div>
     </section>
   </main>
   <script src="./app.js"></script>
